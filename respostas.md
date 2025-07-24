@@ -131,7 +131,7 @@ gs://cblabs_datalake/
 └── logs/
 
 ```
-* para melhor visualização, acesse o bucket na gs:
+### Para melhor visualização, acesse o bucket na gs pelo link abaixo:
 ```
 https://console.cloud.google.com/storage/browser/cblabs_datalake/bronze/res_guest_checks/2024/07/24?authuser=0&inv=1&invt=Ab3owA&project=elegant-skein-464817-t0&pageState=(%22StorageObjectListTable%22 (%22f%22:%22%255B%255D%22))
 ```
