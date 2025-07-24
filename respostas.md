@@ -15,7 +15,7 @@ O documento JSON inicia com um objeto principal que contém:
 
 **Detalhes dos Pedidos (`guestChecks`):**
 
-Cada elemento dentro do array `guestChecks` é um objeto que representa um pedido individual. Estes objetos incluem informações essenciais do pedido, como:
+Cada elemento dentro do array `guestChecks` é um objeto que representa um pedido. Estes objetos incluem informações essenciais do pedido, como:
 * Um identificador único (`guestCheckId`).
 * O número da conta (`chkNum`).
 * Flags de status (`clsdFlag`).
