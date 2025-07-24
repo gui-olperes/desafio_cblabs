@@ -36,8 +36,8 @@
 - [x] D1. Descrever a abordagem escolhida;
 - [x] D2. Crie uma estrutura de pastas capaz de armazenar as respostas da API;
 - [x] D2. Responder perguntas 1 e 3:
-      - [x] Levantar benefícios de armazenar as respostas das APIs;
-      - [x] Levantar implicações de erros de nomenclatura.
+  - [x] Levantar benefícios de armazenar as respostas das APIs;
+  - [x] Levantar implicações de erros de nomenclatura.
 - [x] Montar diagrama do Banco;
 - [x] Criar bucket na Google Cloud Storage com estrutura de pastas criada;
 - [x] Disponibilizar bucket públicamente;
