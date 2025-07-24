@@ -1,6 +1,6 @@
 # Desafio CB Labs
 
-Este projeto tem como objetivo demonstrar a ingestão, transformação e armazenamento de dados de pedidos de restaurante, utilizando um Data Lake (Google Cloud Storage), processamento em Python (Jupyter Notebook) e persistência em banco de dados relacional (MySQL).
+Este projeto é um desafio proposto pelo Coco Bambu, que consiste na criação de um Data Lake para armazenar dados brutos provenientes de APIs, com posterior inserção em um banco de dados relacional, aplicando as melhores práticas de Engenharia de Dados.
 
 ## Estrutura do Projeto
 
