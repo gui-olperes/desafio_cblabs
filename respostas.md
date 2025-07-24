@@ -37,6 +37,12 @@ Os campos no JSON utilizam tipos como:
 **Relações Chave:**
 * O `guestChecks` atua como a entidade central do pedido. `taxes` e `detailLines` são diretamente associados a cada pedido. O conteúdo específico de uma linha de detalhe é definido pelos objetos aninhados (como `menuItem` ou outros tipos). 
 ---  
+
+## D1.2: Transcreva o JSON para tabelas SQL. A implementação deve fazer sentido para operações de restaurante.
+
+* Para visualizar a reposta, confira os arquivos **model.sql** e **diagrama.png**
+--- 
+
 ## D1.3: Descreva a abordagem escolhida em detalhes. Justifique a escolha.
 
 Para transformar o arquivo JSON de pedidos em um modelo de banco de dados, escolhi uma estrutura relacional **organizada e detalhada**, otimizada para as **operações diárias de um restaurante** e para ser a base de dados principal.
