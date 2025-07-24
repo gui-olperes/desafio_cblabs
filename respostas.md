@@ -35,6 +35,6 @@ Os campos no JSON utilizam tipos como:
 * **Nulos:** Para campos opcionais sem valor (ex: `nonTxblSlsTtl`, `balDueTtl`).
 
 **Relações Chave:**
-O `guestChecks` atua como a entidade central do pedido. `taxes` e `detailLines` são diretamente associados a cada pedido. O conteúdo específico de uma linha de detalhe é definido pelos objetos aninhados (como `menuItem` ou outros tipos).
+*O `guestChecks` atua como a entidade central do pedido. `taxes` e `detailLines` são diretamente associados a cada pedido. O conteúdo específico de uma linha de detalhe é definido pelos objetos aninhados (como `menuItem` ou outros tipos).*
 ---  
 ## D1.3: Descreva a abordagem escolhida em detalhes. Justifique a escolha.
