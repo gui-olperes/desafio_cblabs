@@ -4,7 +4,7 @@ Este projeto tem como objetivo demonstrar a ingestão, transformação e armazen
 
 ## Estrutura do Projeto
 
-- `main.ipynb`: Notebook Jupyter responsável por validar toda a logica aplicada ao desafio.
+- `main.ipynb`: Notebook Jupyter responsável por validar toda a lógica aplicada no desafio.
 - `model.sql`: Script SQL para criação do banco de dados e das tabelas normalizadas, refletindo a estrutura dos dados extraídos do JSON.
 - `requirements.txt`: Lista de dependências Python necessárias para executar o notebook.
 - `respostas.md`: Documento com respostas detalhadas das perguntas do desafio.
