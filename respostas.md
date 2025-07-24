@@ -96,3 +96,64 @@ Essa abordagem garante que o banco de dados sirva bem às operações diárias d
 ---
 
 # Respostas D2
+
+## D2.1: Por que armazenar as respostas das APIs no Data Lake?
+
+Armazenar as respostas brutas das APIs em um Data Lake é crucial por:
+
+* **Preservação de Histórico:** Garante um registro completo e imutável de todos os dados recebidos para auditorias, reprocessamento e análises retrospectivas.
+
+* **Flexibilidade para o Futuro:** Permite que novos casos de uso ou modelos (incluindo Machine Learning) sejam desenvolvidos, acessando os dados em sua forma mais original.
+
+* **Resiliência a Mudanças de Esquema:** A camada bruta absorve alterações no esquema da API (ex: campos adicionados/renomeados) sem quebrar imediatamente a ingestão, dando tempo para adaptar as etapas de processamento.
+
+* **Depuração Eficiente:** Facilita a investigação e correção de erros, comparando os dados brutos da API com as saídas das etapas de processamento.
+---
+
+## D2.2: Como você armazenaria os dados? Crie uma estrutura de pastas capaz de armazenar as respostas da API. Ela deve permitir manipulação, verificações, buscas e pesquisas rápidas.
+
+```
+gs://cblabs_datalake/
+
+├── bronze/ # Dados Brutos: Recebidos diretamente das APIs, inalterados.
+│   ├── bi_fiscal_invoice/                  
+│   ├── res_guest_checks/                   
+│   ├── org_charge_back/                    
+│   ├── trans_transactions/                 
+│   └── inv_cash_management_details/        
+│       # Nota: Os arquivos aqui são particionados por data (ano/mês/dia) internamente para otimização.
+│
+├── silver/ # Dados Refinados: Limpos, padronizados e estruturados (geralmente em Parquet).
+│       # Nota: Dados temporais aqui também são particionados por data (ano/mês/dia) internamente.
+│
+└── gold/ # Dados Curados: Agregados e modelados prontos para consumo.
+│
+└── logs/
+
+```
+
+Justificativa:
+
+* Divisão Lógica por Camadas (Bronze, Silver, Gold): Organiza o ciclo de vida do dado, desde o formato bruto até o consumo final.
+
+* Particionamento por Data (implícito): A organização interna por ano/mês/dia é fundamental para buscas e pesquisas rápidas, otimizando o volume de dados lidos e reduzindo custos.
+
+* Facilidade de Manipulação e Verificação: A estrutura permite isolar e reprocessar dados de fontes ou períodos específicos, facilitando a depuração.
+
+* Escalabilidade e Organização: Suporta o crescimento contínuo do volume de dados e a adição de novas fontes sem comprometer a organização ou a performance.
+
+* Logs Dedicados: Uma área separada para logs de execução e acesso é crucial para monitoramento e segurança.
+
+---
+
+## D2.3: Considere que a resposta do endpoint getGuestChecks foi alterada, por exemplo, guestChecks.taxes foi renomeado para guestChecks.taxation. O que isso implicaria?
+
+A alteração implicaria diretamente em:
+
+* **Falha da Pipeline de Dados:** Os scripts que esperam o campo taxes não o encontrarão mais nos novos dados, causando erros e interrompendo o fluxo de dados para as camadas subsequentes.
+
+* **Necessidade de Atualização e Reteste:** O código de ETL/ELT precisará ser modificado para reconhecer o novo nome do campo. Isso exige um reteste completo de todo o pipeline para garantir que os dados sejam processados corretamente.
+
+* **Impacto em produção nos Relatórios e Análises:** análises e relatórios que dependem desse campo podem exibir informações incompletas ou incorretas até que o pipeline seja corrigido e os dados reprocessados.
+
+* **Desafio de Evolução de Esquema:** Este cenário destaca a importância de ter um planejamento para lidar com mudanças na estrutura dos dados da fonte.
